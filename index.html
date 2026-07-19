@@ -17,6 +17,11 @@
     <button data-tab="cube">🎲 큐브</button>
     <button data-tab="cars">🏎️ 미니카</button>
     <button data-tab="fidget">🔊 피젯</button>
+    <button data-tab="pen">🖊️ 펜돌리기</button>
+    <button data-tab="bar">🥃 테이스팅</button>
+    <button data-tab="desk">🪵 데스크</button>
+    <button data-tab="puzzle">🧩 퍼즐</button>
+    <button data-tab="ink">🖋️ 잉크</button>
   </nav>
 </header>
 
@@ -235,6 +240,158 @@
     </div>
   </section>
 
+  <!-- ===================== PEN SPINNING ===================== -->
+  <section class="stage" id="stage-pen">
+    <div class="layout">
+      <div class="canvas-wrap" id="penWrap">
+        <div class="hint">슬롯을 돌려 오늘의 펜 돌리기 콤보를 뽑아보세요</div>
+        <div class="stat" id="penStat">콤보 뽑기: 0</div>
+        <canvas id="penCanvas"></canvas>
+        <div class="combo" id="penCombo"></div>
+      </div>
+      <aside class="panel">
+        <div>
+          <h2>레일 돌리기</h2>
+          <div class="btnrow"><button class="pill primary" id="penSpin">🎰 레일 돌리기</button></div>
+          <p class="small" id="penResult">버튼을 눌러 3연속 콤보를 완성하세요.</p>
+        </div>
+        <div class="divider"></div>
+        <div>
+          <h2>난이도 필터</h2>
+          <label class="chk"><input type="checkbox" id="penEasy" checked> 초급</label>
+          <label class="chk"><input type="checkbox" id="penMid" checked> 중급</label>
+          <label class="chk"><input type="checkbox" id="penHard" checked> 고급</label>
+        </div>
+        <div class="divider"></div>
+        <p class="small">TIP: 뽑힌 콤보를 실제 펜으로 순서대로 연습해 보세요. 엄지 돌리기 → 넘기기 → 받기!</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===================== TASTING BAR ===================== -->
+  <section class="stage" id="stage-bar">
+    <div class="layout">
+      <div class="canvas-wrap" id="barWrap">
+        <div class="hint" id="barTitle">새 잔의 맛을 슬라이더로 기록해보세요</div>
+        <div class="stat" id="barStat">수집 0잔</div>
+        <canvas id="barCanvas"></canvas>
+        <div class="combo" id="barCombo"></div>
+      </div>
+      <aside class="panel">
+        <div>
+          <h2>테이스팅 노트</h2>
+          <div class="field"><label>이름</label><input type="text" id="barName" placeholder="맥캘란 12" class="tin"></div>
+          <div class="field"><label>종류</label>
+            <select id="barType" class="tin"><option>위스키</option><option>와인</option><option>커피</option></select>
+          </div>
+          <div class="taste">
+            <label>단맛 <input type="range" id="tSweet" min="0" max="5" value="3"></label>
+            <label>스모키 <input type="range" id="tSmoke" min="0" max="5" value="2"></label>
+            <label>과일향 <input type="range" id="tFruit" min="0" max="5" value="3"></label>
+            <label>바디감 <input type="range" id="tBody" min="0" max="5" value="3"></label>
+            <label>피니시 <input type="range" id="tFinish" min="0" max="5" value="3"></label>
+          </div>
+          <div class="btnrow"><button class="pill primary" id="barAdd">바 캐비닛에 추가</button></div>
+        </div>
+        <div class="divider"></div>
+        <div>
+          <h2>바 캐비닛 (<span id="barCount">0</span>)</h2>
+          <div id="barList" class="reclist"></div>
+        </div>
+        <div class="divider"></div>
+        <div class="btnrow"><button class="pill" id="barRecommend">🥃 오늘 밤의 추천</button></div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===================== DESKTERIOR ===================== -->
+  <section class="stage" id="stage-desk">
+    <div class="layout">
+      <div class="canvas-wrap" id="deskWrap">
+        <div class="hint">팔레트에서 소품을 골라 책상 위에 배치하세요 (드래그로 이동)</div>
+        <div class="stat" id="deskStat">🌱 성장 0%</div>
+        <canvas id="deskCanvas"></canvas>
+        <div class="combo" id="deskCombo"></div>
+      </div>
+      <aside class="panel">
+        <div>
+          <h2>소품 배치</h2>
+          <div class="btnrow" id="deskPalette"></div>
+        </div>
+        <div class="divider"></div>
+        <div>
+          <h2>광합성 타이머</h2>
+          <div class="btnrow">
+            <button class="pill primary" id="deskLight">💡 식물등 켜기</button>
+            <button class="pill" id="deskWater">💧 물 주기</button>
+          </div>
+          <p class="small" id="deskInfo">식물등을 켜면 식물이 자라요. 물이 마르면 반짝이며 물을 달라고 해요.</p>
+        </div>
+        <div class="divider"></div>
+        <div class="btnrow"><button class="pill" id="deskReset">책상 초기화</button></div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===================== JIGSAW PUZZLE ===================== -->
+  <section class="stage" id="stage-puzzle">
+    <div class="layout">
+      <div class="canvas-wrap" id="puzzleWrap">
+        <div class="hint" id="puzzleHint">조각을 드래그해 제자리에 끼워 맞추세요</div>
+        <div class="stat" id="puzzleStat">0 / 0</div>
+        <canvas id="puzzleCanvas"></canvas>
+        <div class="combo" id="puzzleCombo"></div>
+      </div>
+      <aside class="panel">
+        <div>
+          <h2>퍼즐</h2>
+          <div class="field"><label>난이도</label>
+            <select id="puzzleSize" class="tin"><option value="3">3 × 3 (쉬움)</option><option value="4">4 × 4</option><option value="5">5 × 5 (어려움)</option></select>
+          </div>
+          <div class="field"><label>명화</label>
+            <select id="puzzleArt" class="tin"></select>
+          </div>
+          <div class="btnrow"><button class="pill primary" id="puzzleNew">새 퍼즐</button></div>
+        </div>
+        <div class="divider"></div>
+        <div>
+          <h2>백색소음 라운지</h2>
+          <div class="noise"><label class="chk"><input type="checkbox" id="nRain"> 🌧️ 빗소리</label><input type="range" id="vRain" min="0" max="100" value="50"></div>
+          <div class="noise"><label class="chk"><input type="checkbox" id="nFire"> 🔥 모닥불</label><input type="range" id="vFire" min="0" max="100" value="50"></div>
+          <div class="noise"><label class="chk"><input type="checkbox" id="nVinyl"> 🎵 턴테이블</label><input type="range" id="vVinyl" min="0" max="100" value="50"></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===================== FOUNTAIN PEN INK ===================== -->
+  <section class="stage" id="stage-ink">
+    <div class="layout">
+      <div class="canvas-wrap" id="inkWrap">
+        <div class="hint">잉크를 등록하면 방울로 나타나요</div>
+        <div class="stat" id="inkStat">잉크 0색</div>
+        <canvas id="inkCanvas"></canvas>
+        <div class="combo" id="inkCombo"></div>
+      </div>
+      <aside class="panel">
+        <div>
+          <h2>잉크 등록</h2>
+          <div class="field"><label>브랜드</label><input type="text" id="inkBrand" placeholder="이로시주쿠" class="tin"></div>
+          <div class="field"><label>이름</label><input type="text" id="inkName" placeholder="저녁노을" class="tin"></div>
+          <div class="field"><label>색상</label><input type="color" id="inkColor" value="#b3541e"></div>
+          <div class="btnrow"><button class="pill primary" id="inkAdd">잉크 등록</button></div>
+        </div>
+        <div class="divider"></div>
+        <div>
+          <h2>내 잉크 (<span id="inkCount">0</span>)</h2>
+          <div id="inkList" class="reclist"></div>
+        </div>
+        <div class="divider"></div>
+        <div class="btnrow"><button class="pill" id="inkQuote">🖋️ 오늘의 필사 문장</button></div>
+      </aside>
+    </div>
+  </section>
+
 </main>
 
 <!-- core.js는 반드시 먼저 로드되어 window.TB(공유 유틸)를 만든 뒤 각 장난감 모듈이 이를 사용한다 -->
@@ -245,5 +402,10 @@
 <script src="js/cube.js"></script>
 <script src="js/cars.js"></script>
 <script src="js/fidget.js"></script>
+<script src="js/pen.js"></script>
+<script src="js/bar.js"></script>
+<script src="js/desk.js"></script>
+<script src="js/puzzle.js"></script>
+<script src="js/ink.js"></script>
 </body>
 </html>
