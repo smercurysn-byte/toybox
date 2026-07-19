@@ -314,27 +314,10 @@
     }
   }
 
-  // 보드가 점프/트릭으로 움직이는 동안, 그 세로 위치를 화면 중앙 밴드 안에 유지하도록
-  // 페이지 스크롤을 부드럽게 따라가게 한다. (사용자가 직접 스크롤하지 않아도 항상 보드가 보임)
-  function followBoard(){
-    const rect = canvas.getBoundingClientRect();
-    const groundY = dims.h - 60;
-    const dW = clamp(dims.w*0.34, 160, 240), dH = dW*0.16;
-    // 보드의 현재 세로 위치(캔버스 상단 기준 CSS px)
-    const localY = (bd.mode === "grind") ? (groundY - dH*2.4) : (groundY - 22 - bd.y);
-    const viewportY = rect.top + localY;               // 화면(뷰포트) 기준 세로 위치
-    const hi = window.innerHeight * 0.30;              // 이 밴드(30%~70%)를 벗어나면 따라간다
-    const lo = window.innerHeight * 0.70;
-    let diff = 0;
-    if(viewportY < hi) diff = viewportY - hi;
-    else if(viewportY > lo) diff = viewportY - lo;
-    if(Math.abs(diff) > 1) window.scrollBy(0, diff * 0.5);   // 부드럽게 추적
-  }
-
   let last = performance.now();
   function loop(t){
     const dt = Math.min(0.033, (t-last)/1000); last = t;
-    if(TB.currentTab === "board"){ update(dt); draw(); followBoard(); }
+    if(TB.currentTab === "board"){ update(dt); draw(); }
     requestAnimationFrame(loop);
   }
   resize();
