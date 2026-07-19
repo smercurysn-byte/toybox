@@ -1,0 +1,10 @@
+# Claude Code 로컬 설정
+.claude/
+
+# 개인 연습용 파이썬 스크립트 (앱과 무관)
+또 연습.py
+또또 연습.py
+
+# OS
+Thumbs.db
+.DS_Store

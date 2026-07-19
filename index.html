@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>나만의 토이박스 — 요요 · 핑거보드 · 키캡</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="top">
+  <h1>🧸 나만의 토이박스</h1>
+  <nav class="tabs">
+    <button data-tab="yoyo" class="active">요요</button>
+    <button data-tab="board">핑거보드</button>
+    <button data-tab="keycap">키캡</button>
+    <button data-tab="cube">🎲 큐브</button>
+    <button data-tab="cars">🏎️ 미니카</button>
+    <button data-tab="fidget">🔊 피젯</button>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ===================== YOYO ===================== -->
+  <section class="stage active" id="stage-yoyo">
+    <div class="layout">
+      <div class="canvas-wrap" id="yoyoWrap">
+        <div class="hint">클릭(또는 터치) 유지 : 내려가서 슬립<br>1 ~ 8 : 전문 기술 (자동 실행)</div>
+        <div class="stat" id="yoyoStat">최고 슬립: 0.0s</div>
+        <canvas id="yoyoCanvas"></canvas>
+        <div class="combo" id="yoyoCombo"></div>
+      </div>
+      <aside class="panel">
+        <div>
+          <h2>색상 커스터마이징</h2>
+          <div class="field"><label>바디 색상</label><input type="color" id="yoyoBody"></div>
+          <div class="field"><label>포인트 색상</label><input type="color" id="yoyoAccent"></div>
+          <div class="field"><label>축(코어) 색상</label><input type="color" id="yoyoAxle"></div>
+          <div class="field"><label>스트링 색상</label><input type="color" id="yoyoString"></div>
+        </div>
+        <div class="divider"></div>
+        <div>
+          <h2>프리셋</h2>
+          <div class="swatches" id="yoyoPresets"></div>
+        </div>
+        <div class="divider"></div>
+        <div>
+          <h2>전문 기술 (숫자키)</h2>
+          <p class="small">
+            <b>1</b> 브레인 트위스터 · <b>2</b> 락 더 베이비 · <b>3</b> 워크 더 독<br>
+            <b>4</b> 강제 리턴 · <b>5</b> 롱 슬리퍼 · <b>6</b> 트라피즈<br>
+            <b>7</b> 오버 언더 마운트 · <b>8</b> 디엔에이(DNA)<br>
+            아무 상태에서나 눌러도 자동으로 던지고 기술까지 실행돼요.
+          </p>
+        </div>
+        <div class="divider"></div>
+        <div class="btnrow">
+          <button class="pill" id="yoyoReset">초기화</button>
+        </div>
+        <p class="small">TIP: 슬립 중에는 자동으로 회전이 서서히 느려져요. 8초가 지나면 자동으로 손으로 돌아옵니다.</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===================== FINGERBOARD ===================== -->
+  <section class="stage" id="stage-board">
+    <div class="layout">
+      <div class="canvas-wrap" id="boardWrap">
+        <div class="hint">Space:올리 · ←/→:공중 회전<br>1~8 공중기술 · 9·0 매뉴얼 · Q·W·E·R 그라인드</div>
+        <div class="stat" id="boardStat">트릭 성공: 0</div>
+        <canvas id="boardCanvas"></canvas>
+        <div class="combo" id="boardCombo"></div>
+      </div>
+      <aside class="panel">
+        <div>
+          <h2>색상 커스터마이징</h2>
+          <div class="field"><label>데크 색상</label><input type="color" id="boardDeck"></div>
+          <div class="field"><label>그립 라인 색상</label><input type="color" id="boardGrip"></div>
+          <div class="field"><label>트럭 색상</label><input type="color" id="boardTruck"></div>
+          <div class="field"><label>휠 색상</label><input type="color" id="boardWheel"></div>
+        </div>
+        <div class="divider"></div>
+        <div>
+          <h2>프리셋</h2>
+          <div class="swatches" id="boardPresets"></div>
+        </div>
+        <div class="divider"></div>
+        <div>
+          <h2>전문 기술 (키보드)</h2>
+          <p class="small">
+            <b>공중 플립</b><br>
+            <b>1</b> 킥플립 · <b>2</b> 힐플립 · <b>3</b> 샤빗 · <b>4</b> FS알리(180)<br>
+            <b>5</b> 배리얼 킥플립 · <b>6</b> 하드플립 · <b>7</b> 레이저 플립 · <b>8</b> 임파서블<br>
+            <b>균형</b> — <b>9</b> 매뉴얼 · <b>0</b> 노즈매뉴얼<br>
+            <b>그라인드/슬라이드</b> — <b>Q</b> 노즈슬라이드 · <b>W</b> 테일슬라이드 · <b>E</b> 스미스 · <b>R</b> 크루키드<br>
+            땅에 있을 때 눌러도 자동으로 기술이 나가요.
+          </p>
+        </div>
+        <div class="divider"></div>
+        <div class="btnrow">
+          <button class="pill" id="boardReset">초기화</button>
+        </div>
+        <p class="small">TIP: 캔버스를 클릭해서 포커스를 준 다음 키보드로 조작하세요.</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===================== KEYCAP ===================== -->
+  <section class="stage" id="stage-keycap">
+    <div class="layout">
+      <div class="canvas-wrap kb-outer" id="keycapWrap">
+        <div class="kb" id="kbRoot"></div>
+      </div>
+      <aside class="panel">
+        <div>
+          <h2>테마 프리셋</h2>
+          <div class="swatches" id="keycapPresets"></div>
+        </div>
+        <div class="divider"></div>
+        <div>
+          <h2>선택한 키 꾸미기</h2>
+          <p class="small" id="keySelLabel">키캡을 클릭해서 선택하세요.</p>
+          <div class="field"><label>캡 색상</label><input type="color" id="keyBg" disabled></div>
+          <div class="field"><label>글자 색상</label><input type="color" id="keyFg" disabled></div>
+        </div>
+        <div class="divider"></div>
+        <div class="field">
+          <label>타건음</label>
+          <input type="checkbox" id="soundToggle" checked>
+        </div>
+        <div class="btnrow">
+          <button class="pill" id="keycapReset">초기화</button>
+        </div>
+        <p class="small">TIP: 실제 키보드를 타이핑하면 해당 키캡이 눌리는 애니메이션으로 반응해요.</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===================== CUBE ===================== -->
+  <section class="stage" id="stage-cube">
+    <div class="layout">
+      <div class="canvas-wrap" id="cubeWrap">
+        <div class="hint" id="cubeScramble">스크램블: —</div>
+        <div class="stat" id="cubeTimer">0.00</div>
+        <canvas id="cubeCanvas"></canvas>
+        <div class="combo" id="cubeCombo"></div>
+      </div>
+      <aside class="panel">
+        <div>
+          <h2>스톱워치</h2>
+          <p class="small">캔버스를 클릭해 포커스를 준 뒤 <b>스페이스바</b>로 시작/정지. 정지 시 기록이 저장돼요.</p>
+          <div class="btnrow">
+            <button class="pill primary" id="cubeTimerBtn">기록 시작</button>
+            <button class="pill" id="cubeScrambleBtn">새 스크램블</button>
+          </div>
+          <p class="small" id="cubeBest">최고 기록: —</p>
+          <div id="cubeRecords" class="reclist"></div>
+        </div>
+        <div class="divider"></div>
+        <div>
+          <h2>회전 (클릭 조작)</h2>
+          <div class="btnrow" id="cubeMoves"></div>
+          <div class="btnrow"><button class="pill" id="cubeReset">큐브 초기화(솔브)</button></div>
+        </div>
+        <div class="divider"></div>
+        <div>
+          <h2>패턴 도감</h2>
+          <div id="cubePatterns" class="patlist"></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===================== CARS ===================== -->
+  <section class="stage" id="stage-cars">
+    <div class="layout">
+      <div class="canvas-wrap" id="carsWrap">
+        <div class="hint" id="carsTrackName">랜덤 트랙을 설계해 보세요 →</div>
+        <div class="stat" id="carsStat">차량 0대</div>
+        <canvas id="carsCanvas"></canvas>
+        <div class="combo" id="carsCombo"></div>
+      </div>
+      <aside class="panel">
+        <div>
+          <h2>차고에 추가</h2>
+          <div class="field"><label>이름</label><input type="text" id="carName" placeholder="아반떼 N" class="tin"></div>
+          <div class="field"><label>브랜드</label>
+            <select id="carBrand" class="tin">
+              <option>핫휠</option><option>타미야</option><option>마조레트</option><option>토미카</option><option>기타</option>
+            </select>
+          </div>
+          <div class="field"><label>색상</label><input type="color" id="carColor" value="#3a86ff"></div>
+          <div class="field"><label>최고속도(km/h)</label><input type="number" id="carSpeed" value="300" min="0" max="999" class="tin"></div>
+          <div class="btnrow"><button class="pill primary" id="carAdd">차고에 추가</button></div>
+        </div>
+        <div class="divider"></div>
+        <div>
+          <h2>내 차고 (<span id="carCount">0</span>)</h2>
+          <div id="carList" class="reclist"></div>
+        </div>
+        <div class="divider"></div>
+        <div class="btnrow"><button class="pill" id="trackBtn">🎲 랜덤 트랙 설계</button></div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===================== FIDGET ===================== -->
+  <section class="stage" id="stage-fidget">
+    <div class="layout">
+      <div class="canvas-wrap" id="fidgetWrap">
+        <div class="hint">스피너를 마우스로 <b>휙</b> 돌려보세요 (드래그)</div>
+        <div class="stat" id="fidgetStat">1분 콤보: 0</div>
+        <canvas id="fidgetCanvas"></canvas>
+        <div class="combo" id="fidgetCombo"></div>
+      </div>
+      <aside class="panel">
+        <div>
+          <h2>피젯 패드</h2>
+          <div class="padgrid" id="padGrid"></div>
+        </div>
+        <div class="divider"></div>
+        <div>
+          <h2>팝잇 뽁뽁이</h2>
+          <div class="popit" id="popit"></div>
+        </div>
+        <div class="divider"></div>
+        <div>
+          <h2>스트레스 해소 (10초 연타)</h2>
+          <div class="btnrow"><button class="pill primary" id="rushBtn">마구 누르기 시작!</button></div>
+          <p class="small" id="rushInfo">제한 시간 동안 스피너·패드·팝잇을 마구 눌러 점수를 올려요.</p>
+          <p class="small" id="fidgetBest">최고 점수: —</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+</main>
+
+<!-- core.js는 반드시 먼저 로드되어 window.TB(공유 유틸)를 만든 뒤 각 장난감 모듈이 이를 사용한다 -->
+<script src="js/core.js"></script>
+<script src="js/yoyo.js"></script>
+<script src="js/board.js"></script>
+<script src="js/keycap.js"></script>
+<script src="js/cube.js"></script>
+<script src="js/cars.js"></script>
+<script src="js/fidget.js"></script>
+</body>
+</html>
